@@ -12,16 +12,7 @@ use yii\base\InvalidParamException;
 use yii\web\BadRequestHttpException;
 use yii\web\Controller;
 use yii\filters\VerbFilter;
-use yii\filters\AccessControl;
-use common\models\FrontMenu;
-use common\models\WebCommon;
-use common\models\Product;
-use common\models\News;
-use common\models\ProductType;
-use yii\data\ActiveDataProvider;
-use yii\data\Pagination;
-use common\models\Company;
-use common\models\FrontLog;
+use yii\filters\AccessControl; 
 
 /**
  * Site controller
