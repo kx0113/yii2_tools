@@ -1,0 +1,13 @@
+assets/*
+!assets/.gitignore
+protected/runtime/*
+!protected/runtime/.gitignore
+protected/data/*.db
+themes/classic/views/
+/.svn
+.idea/
+
+backend/web/uploads/
+data/*
+frontend/runtime/*
+backend/runtime/*

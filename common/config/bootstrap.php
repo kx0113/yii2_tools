@@ -1,0 +1,25 @@
+<?php
+Yii::setAlias('@common', dirname(__DIR__));
+Yii::setAlias('@frontend', dirname(dirname(__DIR__)) . '/frontend');
+Yii::setAlias('@backend', dirname(dirname(__DIR__)) . '/backend');
+Yii::setAlias('@console', dirname(dirname(__DIR__)) . '/console');
+Yii::setAlias('@data', dirname(dirname(__DIR__)) . '/data');
+Yii::setAlias('@site', dirname(dirname(__DIR__)) . '/site');
+Yii::setAlias('@site2', dirname(dirname(__DIR__)) . '/site2');
+Yii::setAlias('@site3', dirname(dirname(__DIR__)) . '/site3');
+Yii::setAlias('@site4', dirname(dirname(__DIR__)) . '/site4');
+Yii::setAlias('@site5', dirname(dirname(__DIR__)) . '/site5');
+Yii::setAlias('@site6', dirname(dirname(__DIR__)) . '/site6');
+Yii::setAlias('@site7', dirname(dirname(__DIR__)) . '/site7');
+Yii::setAlias('@site8', dirname(dirname(__DIR__)) . '/site8');
+Yii::setAlias('@site9', dirname(dirname(__DIR__)) . '/site9');
+Yii::setAlias('@site10', dirname(dirname(__DIR__)) . '/site10');
+Yii::setAlias('@site10', dirname(dirname(__DIR__)) . '/site10');
+Yii::setAlias('@site11', dirname(dirname(__DIR__)) . '/site11');
+Yii::setAlias('@site12', dirname(dirname(__DIR__)) . '/site12');
+Yii::setAlias('@site13', dirname(dirname(__DIR__)) . '/site13');
+Yii::setAlias('@site14', dirname(dirname(__DIR__)) . '/site14');
+Yii::setAlias('@site15', dirname(dirname(__DIR__)) . '/site15');
+Yii::setAlias('@site16', dirname(dirname(__DIR__)) . '/site16');
+Yii::setAlias('@mobile1', dirname(dirname(__DIR__)) . '/mobile1');
+Yii::setAlias('@m2', dirname(dirname(__DIR__)) . '/m2');
