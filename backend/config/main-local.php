@@ -1,27 +1,10 @@
 <?php
 
 $config = [
-    'language'=>'zh-CN',
     'components' => [
         'request' => [
             // !!! insert a secret key in the following (if it is empty) - this is required by cookie validation
-            'cookieValidationKey' => '3X3GCw78PsgKB5ApPTYw8fexUweeKTq2',
-                'enableCsrfValidation' => false,
-
-        ],
-        'formatter' => [
-            'dateFormat' => 'Y-m-d H:i:s',
-        ],
-        'i18n' => [
-            'translations' => [
-                '*' => [
-                    'class' => 'yii\i18n\PhpMessageSource',
-                    //'basePath' => '/messages',
-                    'fileMap' => [
-                        'common' => 'common.php'
-                    ],
-                ],
-            ],
+            'cookieValidationKey' => 'n6aW05qr7ZW-xIWoMaK04ckDBALI2sfB',
         ],
     ],
 ];

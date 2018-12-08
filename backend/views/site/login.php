@@ -7,46 +7,29 @@
 use yii\helpers\Html;
 use yii\bootstrap\ActiveForm;
 
-$this->title = 'Y+后台管理系统';
+$this->title = 'Login';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<style>
-    body{background: #fff}
-</style>
-<div class="middle-box text-center loginscreen  animated fadeInDown">
-     <img src="./img/108108.png" />
-    <div style="margin:30px 0 0 0;" class="panel panel-default">
-    <div style="width:100%;padding: 20px 40px 10px 40px;">
+<div class="site-login">
+    <h1><?= Html::encode($this->title) ?></h1>
+
+    <p>Please fill out the following fields to login:</p>
 
     <div class="row">
-
-        <div class="">
+        <div class="col-lg-5">
             <?php $form = ActiveForm::begin(['id' => 'login-form']); ?>
 
-                <?= $form->field($model, 'username')->textInput(['autofocus' => true])->label('用户名') ?>
+                <?= $form->field($model, 'username')->textInput(['autofocus' => true]) ?>
 
-                <?= $form->field($model, 'password')->passwordInput()->label('密码') ?>
+                <?= $form->field($model, 'password')->passwordInput() ?>
 
-
+                <?= $form->field($model, 'rememberMe')->checkbox() ?>
 
                 <div class="form-group">
-                    <?= Html::submitButton('登陆', ['class' => 'btn btn-primary', 'name' => 'login-button']) ?>
+                    <?= Html::submitButton('Login', ['class' => 'btn btn-primary', 'name' => 'login-button']) ?>
                 </div>
 
             <?php ActiveForm::end(); ?>
         </div>
-    </div></div>
-
-    </div>
-    <div class="">
-        <br>
-        <br>
-        <div class="">青岛凯旋信息科技有限公司<br>
-            © 2009-2018 www.kaixuans.com<br>
-            版权所有 ICP证：鲁ICP备17041765号<br>
-        </div>
     </div>
 </div>
-
-
-

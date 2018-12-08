@@ -1,41 +1,35 @@
-assets/*
-!assets/.gitignore
-protected/runtime/*
-!protected/runtime/.gitignore
-protected/data/*.db
-themes/classic/views/
-/.svn
-.idea/
-/backend/runtime/*
-/backend/web/uploads/
-/data/upload/
-/frontend/runtime/*
-/frontend/web/assets/*
-/frontend/runtime/*
-backend/runtime/debug/*
-/backend/web/assets/*
-/backend/runtime/debug/index.data
-/site1/web/assets/*
-/site1/runtime/*
-/site2/web/assets/*
-/site2/runtime/*
-/site3/web/assets/*
-/site3/runtime/*
-/site4/web/assets/*
-/site4/runtime/*
-/site5/web/assets/*
-/site5/runtime/*
-/site6/web/assets/*
-/site6/runtime/*
-/site7/web/assets/*
-/site7/runtime/*
-/site8/web/assets/*
-/site8/runtime/*
-/site9/web/assets/*
-/site9/runtime/*
-/site10/web/assets/*
-/site10/runtime/*
-/site11/web/assets/*
-/site11/runtime/*
-/m2/web/assets/*
-/m2/runtime/*
+# yii console commands
+/yii
+/yii_test
+/yii_test.bat
+
+# phpstorm project files
+.idea
+
+# netbeans project files
+nbproject
+
+# zend studio for eclipse project files
+.buildpath
+.project
+.settings
+
+# windows thumbnail cache
+Thumbs.db
+
+# composer vendor dir
+/vendor
+
+# composer itself is not needed
+composer.phar
+
+# Mac DS_Store Files
+.DS_Store
+
+# phpunit itself is not needed
+phpunit.phar
+# local phpunit config
+/phpunit.xml
+
+# vagrant runtime
+/.vagrant

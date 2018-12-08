@@ -3,7 +3,7 @@ namespace common\models;
 
 use Yii;
 use yii\base\Model;
-use backend\models\Log;
+
 /**
  * Login form
  */
@@ -17,7 +17,7 @@ class LoginForm extends Model
 
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function rules()
     {
@@ -51,15 +51,15 @@ class LoginForm extends Model
     /**
      * Logs in a user using the provided username and password.
      *
-     * @return boolean whether the user is logged in successfully
+     * @return bool whether the user is logged in successfully
      */
     public function login()
     {
         if ($this->validate()) {
             return Yii::$app->user->login($this->getUser(), $this->rememberMe ? 3600 * 24 * 30 : 0);
-        } else {
-            return false;
         }
+        
+        return false;
     }
 
     /**
@@ -74,20 +74,5 @@ class LoginForm extends Model
         }
 
         return $this->_user;
-    }
-
-    //登录记录
-    public function loginLog($data=''){
-        $Log = new Log();
-        $Log->username=yii::$app->user->identity->username;
-        $Log->create_time=time();
-        $Log->data=$data;
-        $Log->ip=Yii::$app->request->userIP;
-        $res=$Log->save();
-        if($res){
-            return true;
-        }else{
-            return false;
-        }
     }
 }

@@ -1,4 +1,4 @@
-<?php include 'header.php'; ?>
+
 <body style="background: #fff;">
 <link rel="stylesheet" href="static/select2-develop/dist/css/select2.min.css"/>
 <link rel="stylesheet" href="static/jquery-jsonview/dist/jquery.jsonview.css"/>
@@ -233,5 +233,3 @@
 
 
 </script>
-
-<?php include 'footer.php'; ?>

@@ -1,19 +1,13 @@
 <?php
 return [
-    'timeZone' => 'Asia/Shanghai',
+    'aliases' => [
+        '@bower' => '@vendor/bower-asset',
+        '@npm'   => '@vendor/npm-asset',
+    ],
     'vendorPath' => dirname(dirname(__DIR__)) . '/vendor',
     'components' => [
         'cache' => [
             'class' => 'yii\caching\FileCache',
-        ],
-        'upload'=>[
-            'class'=>'common\components\Upload'
-        ],
-        'CommonClass'=>[
-            'class'=>'common\components\BaseModel'
-        ],
-        'Common'=>[
-            'class'=>'common\components\Common'
         ],
     ],
 ];
