@@ -19,8 +19,6 @@ class IndexController extends \yii\web\Controller
     }
     public function actionIndex()
     {
-
-
         return $this->render('index');
     }
 
@@ -30,9 +28,9 @@ class IndexController extends \yii\web\Controller
         $session=Yii::$app->session;
         //最近登录记录
         $web_list=Web::find()->where(['status'=>1])->all();
-        $log = Log::find()->limit(30)->orderBy('id desc')->asArray()->all();
+//        $log = Log::find()->limit(30)->orderBy('id desc')->asArray()->all();
         return $this->render('welcome',[
-            'log' => $log,
+//            'log' => $log,
             'web_session_id'=>$session->get('web_id'),
             'web_list'=>$web_list,
         ]);

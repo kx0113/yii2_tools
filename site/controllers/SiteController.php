@@ -13,6 +13,7 @@ use yii\web\BadRequestHttpException;
 use yii\web\Controller;
 use yii\filters\VerbFilter;
 use yii\filters\AccessControl;
+use common\models\Signal;
 
 /**
  * Site controller
@@ -40,15 +41,7 @@ class SiteController extends Controller
 
     public function api_sign()
     {
-//        Yii::$app->params['web1']['news_index_limit'];
-        $data['input_url'] = '';
-        $data['url'] = config('tools.curl_host');
-        $data['app_id'] = config('tools.curl_appid');
-        $data['secret_key'] = config('tools.curl_secret');
-        $data['action'] = config('tools.curl_action');
-        $data['timestamp'] = time();
-        $data['rand'] = rand(1111, 9999);
-//        return $this->fetch('api_sign', ['data' => $data]);
+
     }
 
     public function actionError(){
@@ -277,11 +270,13 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
+
         $data['input_url'] = '';
-        $data['url'] =  Yii::$app->params['curl_host'];
-        $data['app_id'] =  Yii::$app->params['curl_appid'];
-        $data['secret_key'] =  Yii::$app->params['curl_secret'];
-        $data['action'] =  Yii::$app->params['curl_action'];
+//        $data['url'] =  Yii::$app->params['curl_host'];
+        $data['url'] = Signal::find()->where(['types'=>1])->asArray()->all();
+        $data['app_id'] = Signal::find()->where(['types'=>4])->asArray()->all();
+        $data['secret_key'] =  Signal::find()->where(['types'=>3])->asArray()->all();
+        $data['action'] = Signal::find()->where(['types'=>2])->asArray()->all();
         $data['timestamp'] = time();
         $data['rand'] = rand(1111, 9999);
         return $this->render('index',['data'=>$data]);

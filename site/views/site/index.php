@@ -23,7 +23,6 @@
 
         <div class="form-group">
             <label for="url">auto_url</label>
-            <!--<select class="form-control" name="url" id="url">-->
             <select style="padding:10px 0;" class="js-example-basic-single2  js-states form-control" name="url" id="url">
                 <?php if(isset($data['url'])){ foreach($data['url'] as $k=>$v){ ?>
                 <option value="<?php echo $v['info']?>"><?php echo $v['name'].'-'.$v['info']?></option>
@@ -33,13 +32,17 @@
 
         <div class="form-group">
             <label for="action2">action</label>
-        <select style="height: 200px" class="js-example-basic-single1 js-states form-control" id="id_label_single"></select>
+            <select style="padding:10px 0;" class="js-example-basic-single2  js-states form-control"  name="action" id="action">
+            <?php if(isset($data['action'])){ foreach($data['action'] as $k=>$v){ ?>
+                <option  data-desc1='<?php echo $v['desc1']?>'
+                data-desc2='<?php echo $v['desc2']?>'
+                value="<?php echo $v['info']?>"><?php echo $v['name'].'-'.$v['info']?></option>
+            <?php } }?>
         </select>
         </div>
 
         <div class="form-group">
             <label for="app_id">secret_key</label>
-            <!--<select class="form-control" name="secret_key" id="secret_key">-->
             <select style="padding:10px 0;" class="js-example-basic-single2  js-states form-control"  name="secret_key" id="secret_key">
                 <?php if(isset($data['secret_key'])){ foreach($data['secret_key'] as $k=>$v){ ?>
                 <option value="<?php echo $v['info']?>"><?php echo $v['name'].'-'.$v['info']?></option>
@@ -50,7 +53,6 @@
         <div class="form-group" style="margin-bottom: 0;">
             <label for="app_id">app_id</label>
             <select style="padding:10px 0;" class="js-example-basic-single2  js-states form-control"  name="app_id" id="app_id">
-            <!--<select class="form-control" name="app_id" id="app_id">-->
                 <?php if(isset($data['app_id'])){ foreach($data['app_id'] as $k=>$v){ ?>
                 <option value="<?php echo $v['info']?>"><?php echo $v['name'].'-'.$v['info']?></option>
                 <?php } }?>
@@ -127,26 +129,13 @@
         <div class="form-group">
             <label for="header_params">header_params</label>
             <textarea class="form-control" id="header_params"
-                      name="header_params" rows="8">{
-    "appid":"201812039866",
-    "sign":"751e32f0bf56950aaa9d22b7ce1fd0e4",
-    "token":"",
-    "timestamp":"1543922301",
-    "rand":"123456"
-}</textarea>
+                      name="header_params" rows="8"></textarea>
         </div>
         <div class="form-group">
             <label for="body_params">body_params</label>
             <textarea class="form-control"
                       value='' id="body_params"
-                      name="body_params" rows="16">
-{
-    "mobile":"13589333331",
-    "passwd":"123456",
-    "sms_code":"",
-    "channel_name":""
-}
-            </textarea>
+                      name="body_params" rows="16"></textarea>
         </div>
         <div class="form-group">
             <label for="sign">return</label>
@@ -165,7 +154,14 @@
 <br>
 <script type="text/javascript">
 
-
+  $("#action").change(function(){
+//      var a = $("select option:selected").attr("name");
+      var desc1=$("#action option:selected").attr('data-desc1');
+      $("#header_params").html(desc1);
+      var desc2=$("#action option:selected").attr('data-desc2');
+      $("#body_params").html(desc2);
+      console.log(desc1);
+  });
     $(".js-example-basic-single2").select2({
         placeholder: "Select a State",
         allowClear: true,
@@ -187,7 +183,7 @@
         allowClear: true,
         closeOnSelect:true
     });
-    get_action();
+//    get_action();
     function check_api() {
         $("#json").html('');
         var params = {};
@@ -195,7 +191,7 @@
         var post_rand = $('input[name="post_rand"]:checked ').val();
         var post_app_id = $('input[name="post_app_id"]:checked ').val();
         var post_sign = $('input[name="post_sign"]:checked ').val();
-        params.auto_url = $("#url").val() + $("#id_label_single").val();
+        params.auto_url = $("#url").val() + $("#action").val();
 //        params.id_label_single = $("#id_label_single").val();
         params.input_url = $("#input_url").val();
 //        params.post_timestamp = $("#post_timestamp").val();
@@ -218,18 +214,7 @@
             $("#json").JSONView(e);
         }, 'json');
     }
-    function get_action() {
-        var params={};
-        $.post("index.php?r=site/getaction", params, function (e) {
-            $(".js-example-basic-single1").select2({
-                data:e,
-                width:'resolve',
-                placeholder: "Select a State",
-                allowClear: true,
-                closeOnSelect:true
-            });
-        }, 'json');
-    }
+
 
 
 </script>

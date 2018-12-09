@@ -121,10 +121,7 @@ $this->title = '';
                 </button>
                 <nav class="page-tabs ">
                     <div class="page-tabs-content web_list">
-                        <?php foreach($web_list as $wk=>$wv){?>
-                            <a href="javascript:;" class="web_post_session <?php if($wv['id'] == $web_session_id){ ?> active  <?php } ?>"
-                               data-id="<?php echo $wv['id'];?>"><?php echo $wv['name'];?></a>
-                        <?php } ?>
+
 
                     </div>
 
@@ -138,10 +135,7 @@ $this->title = '';
                     </button>
                     <ul role="menu" class="dropdown-menu dropdown-menu-right">
 
-                        <?php foreach($web_list as $wk=>$wv){?>
-                            <li><a href="http://<?php echo $wv['weburl']; ?>" class="web_post_session <?php if($wv['id'] == $web_session_id){ ?> active  <?php } ?>"
-                               target="_blank"  data-id="<?php echo $wv['id'];?>"><?php echo $wv['name'];?></a></li>
-                        <?php } ?>
+
                     </ul>
                 </div>
                 <a href="<?=Url::toRoute('site/logout');?>" class="roll-nav roll-right J_tabExit"><i class="fa fa fa-sign-out"></i> 退出</a>
@@ -257,18 +251,7 @@ $this->title = '';
 <?=Html::jsFile('@web/js/hplus.min.js')?>
 <?=Html::jsFile('@web/js/contabs.min.js')?>
 <?=Html::jsFile('@web/js/plugins/pace/pace.min.js')?>
-<script>
-    $(".web_post_session").click(function(){
-        var id=$(this).attr('data-id');
-        var par={};
-        par.id=id;
-        $.post('index.php?r=/web/ajax-web-session',par,function(data){
-            if(data.msg=='1'){
-                location.reload();
-            }
-        },'json');
-    });
-</script>
+
 <script>
     $(".s-skin-1").click();
 </script>
