@@ -13,9 +13,16 @@
 
 
         <div class="form-group"><a class="btn btn-default check_api" onclick="check_api();">Submit</a></div>
-
         <div class="form-group">
-            <label for="input_url">input_url&nbsp;【first】</label>
+            <label for="input_url">md5</label>
+            <input  style="" type="text" class="form-control"
+                   value="" id="text_md5"
+                   name="text_md5" placeholder="">
+            <br>
+            <a class="btn btn-default check_api" onclick="text_md5();">md5</a>
+        </div>
+        <div class="form-group">
+            <label for="input_url">input_url&nbsp;&nbsp【first】</label>
             <input type="text" class="form-control"
                    value="<?php if(isset($data['input_url'])){echo $data['input_url'];}?>" id="input_url"
                    name="input_url" placeholder="">
@@ -41,15 +48,34 @@
         </select>
         </div>
 
-        <div class="form-group">
+        <div class="form-group"  style="margin-bottom: 0;">
             <label for="app_id">secret_key</label>
-            <select style="padding:10px 0;" class="js-example-basic-single2  js-states form-control"  name="secret_key" id="secret_key">
+            <select style="padding:10px 0;" data-status="1"
+                    class="js-example-basic-single2  js-states form-control"
+                    name="secret_key" id="secret_key">
                 <?php if(isset($data['secret_key'])){ foreach($data['secret_key'] as $k=>$v){ ?>
                 <option value="<?php echo $v['info']?>"><?php echo $v['name'].'-'.$v['info']?></option>
                 <?php } }?>
             </select>
         </div>
 
+        <div class="form-group" >
+            <div class=" col-xs-12" style="padding: 0;">
+                <div class="checkbox" style="padding: 0;">
+                    <label style="padding: 0;">
+                        <input type="radio" value="1" onclick="secret_key_switch(1)" checked name="secret_key_switch"> Enabled
+                    </label>
+                    <label>
+                        <input type="radio" onclick="secret_key_switch(2)" value="2" name="secret_key_switch"> Disabled
+                    </label>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <input type="text" class="form-control"
+                   value="" id="secret_key_text"
+                   name="secret_key_text" placeholder="custom secret_key">
+        </div>
         <div class="form-group" style="margin-bottom: 0;">
             <label for="app_id">app_id</label>
             <select style="padding:10px 0;" class="js-example-basic-single2  js-states form-control"  name="app_id" id="app_id">
@@ -153,7 +179,7 @@
 <br>
 <br>
 <script type="text/javascript">
-
+    $("#secret_key_text").hide();
   $("#action").change(function(){
 //      var a = $("select option:selected").attr("name");
       var desc1=$("#action option:selected").attr('data-desc1');
@@ -162,6 +188,15 @@
       $("#body_params").html(desc2);
       console.log(desc1);
   });
+  function secret_key_switch(params) {
+      $("#secret_key").attr('data-status',params);
+      if(params==1){
+          $("#secret_key_text").hide();
+      }else{
+          $("#secret_key_text").show();
+      }
+
+  }
     $(".js-example-basic-single2").select2({
         placeholder: "Select a State",
         allowClear: true,
@@ -184,6 +219,11 @@
         closeOnSelect:true
     });
 //    get_action();
+    function text_md5() {
+        $.post("index.php?r=site/text-md5", {"str":$("#text_md5").val()}, function (e) {
+            $("#text_md5").val(e.post_return);
+        }, 'json');
+    }
     function check_api() {
         $("#json").html('');
         var params = {};
@@ -191,10 +231,9 @@
         var post_rand = $('input[name="post_rand"]:checked ').val();
         var post_app_id = $('input[name="post_app_id"]:checked ').val();
         var post_sign = $('input[name="post_sign"]:checked ').val();
+        var secret_key_status = $("#secret_key").attr('data-status');
         params.auto_url = $("#url").val() + $("#action").val();
-//        params.id_label_single = $("#id_label_single").val();
         params.input_url = $("#input_url").val();
-//        params.post_timestamp = $("#post_timestamp").val();
         params.secret_key = $("#secret_key").val();
         if(post_timestamp=="1"){
             params.timestamp = $("#timestamp").val();
@@ -204,6 +243,11 @@
         }
         if(post_app_id=="1"){
             params.app_id = $("#app_id").val();
+        }
+        if(secret_key_status=='1'){
+            params.secret_key = $("#secret_key").val();
+        }else{
+            params.secret_key = $("#secret_key_text").val();
         }
         params.post_sign =post_sign;
         params.body_params = $("#body_params").val();
